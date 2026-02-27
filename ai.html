@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Model - Transformer Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>AI Fault Prediction Model</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="login.html">Login</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<section>
+
+<h2>AI Fault Prediction System</h2>
+
+<div class="ai-box">
+
+    <h3>Enter Transformer Parameters</h3>
+
+    <input type="number" id="aiOil" placeholder="Oil Temperature (°C)">
+    <input type="number" id="aiWinding" placeholder="Winding Temperature (°C)">
+    <input type="number" id="aiLoad" placeholder="Load Current (A)">
+
+    <button onclick="predictFault()">Predict Condition</button>
+
+    <div class="ai-result" id="aiResult"></div>
+
+</div>
+
+</section>
+
+<footer>
+AI Based Transformer Monitoring | 2026
+</footer>
+
+<script>
+function predictFault() {
+
+    let oil = parseFloat(document.getElementById("aiOil").value);
+    let winding = parseFloat(document.getElementById("aiWinding").value);
+    let load = parseFloat(document.getElementById("aiLoad").value);
+
+    if(isNaN(oil) || isNaN(winding) || isNaN(load)) {
+        document.getElementById("aiResult").innerHTML =
+        "⚠ Please enter all values!";
+        return;
+    }
+
+    // Simple AI Logic Simulation
+    let healthIndex = 100 - ((oil + winding) / 4) - (load / 20);
+
+    let result = "";
+
+    if (healthIndex > 80) {
+        result = "✅ Transformer is HEALTHY <br> Health Index: " + healthIndex.toFixed(1) + "%";
+        document.getElementById("aiResult").className = "ai-result healthy";
+    }
+    else if (healthIndex > 50) {
+        result = "⚠ WARNING Condition <br> Health Index: " + healthIndex.toFixed(1) + "%";
+        document.getElementById("aiResult").className = "ai-result warning";
+    }
+    else {
+        result = "🚨 CRITICAL Fault Risk! Trip Recommended <br> Health Index: " + healthIndex.toFixed(1) + "%";
+        document.getElementById("aiResult").className = "ai-result critical";
+    }
+
+    document.getElementById("aiResult").innerHTML = result;
+}
+</script>
+
+</body>
+</html>

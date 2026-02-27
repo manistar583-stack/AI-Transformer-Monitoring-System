@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>Live Monitoring Dashboard</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="ai.html">AI Model</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Logout</a>
+</nav>
+
+<button onclick="window.location.href='index.html'">
+⬅ Back to Home
+</button>
+
+<section>
+
+<h2>Live Parameter Trends</h2>
+
+<div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+
+    <canvas id="oilChart" width="300" height="200"></canvas>
+    <canvas id="windingChart" width="300" height="200"></canvas>
+    <canvas id="loadChart" width="300" height="200"></canvas>
+
+</div>
+
+<br>
+
+<button onclick="downloadReport()">📥 Download Graph Report</button>
+
+<div class="card-container">
+    <div class="card">
+        <h3>Oil Temp</h3>
+        <p id="oil"></p>
+    </div>
+
+    <div class="card">
+        <h3>Winding Temp</h3>
+        <p id="winding"></p>
+    </div>
+
+    <div class="card">
+        <h3>Load Current</h3>
+        <p id="load"></p>
+    </div>
+</div>
+
+<h2>Health Index</h2>
+<div id="health" class="health-index"></div>
+<div id="alarm"></div>
+
+</section>
+
+<audio id="alarmSound">
+    <source src="https://www.soundjay.com/buttons/beep-01a.mp3" type="audio/mpeg">
+</audio>
+
+<!-- LOAD SCRIPTS ONLY ONCE AND AT BOTTOM -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

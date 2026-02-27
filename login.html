@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Transformer System</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-container {
+            width: 350px;
+            margin: 100px auto;
+            padding: 30px;
+            background: #1e293b;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #38bdf8;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .login-container button {
+            width: 100%;
+        }
+
+        .back-btn {
+            margin-top: 15px;
+            background: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>AI Transformer Monitoring - Login</header>
+
+<div class="login-container">
+
+    <h2>Admin Login</h2>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <button class="back-btn" onclick="window.location.href='index.html'">
+        ⬅ Back to Home
+    </button>
+
+    <p id="message"></p>
+
+</div>
+
+<script>
+function login() {
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    if(user === "admin" && pass === "1234") {
+        window.location.href = "dashboard.html";
+    } else {
+        document.getElementById("message").innerHTML = "Invalid Login!";
+        document.getElementById("message").style.color = "red";
+    }
+}
+</script>
+
+</body>
+</html>
